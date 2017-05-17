@@ -1,0 +1,117 @@
+<div class="tabcontrol2" data-role="tabcontrol">
+                            <ul class="tabs">
+                                <li><a href="#frame_5_1">User Profile</a></li>
+                                <li><a href="#frame_5_2">Baby Information</a></li>
+                                <li><a href="#frame_5_3">Application Settings</a></li>
+                                <!--<li class="disabled"><a href="">Tab 5</a></li>-->
+                            </ul>
+                            <div class="frames">
+                                <div class="frame" id="frame_5_1">
+
+                        <form [formGroup]="settingsForm" (ngSubmit)="saveSettings(settingsForm.value)">
+                            <label>UserName</label>    
+                            <div class="input-control text input" data-role="input">
+                                <!--<input type="text">-->
+                                <p      *ngIf="!showUsername">{{currentUser.userName}}</p>
+                                <input formControlName="userName"  *ngIf="showUsername" type="text" value="Denmantm">
+                                <button *ngIf="!showUsername" (click)="showUsername=true" class="button">
+                                    <span class="mif-pencil"></span>
+                                </button>
+                                <button *ngIf="showUsername" (click)="showUsername=false" class="button">
+                                    <span class="mif-cancel"></span>
+                                </button>
+                            </div>
+
+                            <label>First Name</label>    
+                            <div class="input-control text input" data-role="input">
+                                <!--<input type="text">-->
+                                <p      *ngIf="!showFirst">{{currentUser.firstName}}</p>
+                                <input formControlName="firstName"  *ngIf="showFirst" type="text" value="Denmantm">
+                                <button *ngIf="!showFirst" (click)="showFirst=true" class="button">
+                                    <span class="mif-pencil"></span>
+                                </button>
+                                <button *ngIf="showFirst" (click)="showFirst=false" class="button">
+                                    <span class="mif-cancel"></span>
+                                </button>
+                            </div>
+
+                            <label>Last Name</label>    
+                            <div class="input-control text input" data-role="input">
+                                <!--<input type="text">-->
+                                <p      *ngIf="!showLast">{{currentUser.lastName}}</p>
+                                <input formControlName="lastName"  *ngIf="showLast" type="text" value="Denmantm">
+                                <button *ngIf="!showLast" (click)="showLast=true" class="button">
+                                    <span class="mif-pencil"></span>
+                                </button>
+                                <button *ngIf="showLast" (click)="showLast=false" class="button">
+                                    <span class="mif-cancel"></span>
+                                </button>
+                            </div>
+                            
+                                <div class="form-actions">
+                                    <button  type="submit" class="button primary">Save</button>
+                                    <button  id='cancel_login_button' type="button" data-dismiss="modal" class="button link">Close</button>
+                                </div>
+                            </form>
+
+                                    </div>
+                                <div class="frame" id="frame_5_2">
+                                    
+                        <form [formGroup]="babySettingsForm" (ngSubmit)="saveBabySettings(babySettingsForm.value)">
+                            <label>Baby's Name</label>    
+                            <div class="input-control text input" data-role="input">
+                                <!--<input type="text">-->
+                                <p      *ngIf="!showBabyname">{{currentUser.babySettings.babyName}}</p>
+                                <input formControlName="babyName"  *ngIf="showBabyname" type="text" value="Denmantm">
+                                <button *ngIf="!showBabyname" (click)="showBabyname=true" class="button">
+                                    <span class="mif-pencil"></span>
+                                </button>
+                                <button *ngIf="showBabyname" (click)="showBabyname=false" class="button">
+                                    <span class="mif-cancel"></span>
+                                </button>
+                            </div>
+                            <label>Babys Birthday {{x}}</label>
+                            <div *ngIf="showBabyBirthday"  class="input-control text" data-role="datepicker" [attr.data-preset]="currentUser.babySettings.babyBirthDate">
+                                <input (change)="x=$event.target.value" formControlName="babyBirthDate" type="text">
+                                <button class="button"><span class="mif-calendar"></span></button>
+                                <button (click)="showBabyBirthday=false" class="button">
+                                    <span class="mif-cancel"></span>
+                                </button>
+                            </div>
+                            <div *ngIf="!showBabyBirthday" class="input-control text input" data-role="input">
+                                <!--<input type="text">-->
+                                <p>{{currentUser.babySettings.babyBirthDate  | date: 'yyyy.MM.dd'}}</p>
+                                <button  (click)="showBabyBirthday=true" class="button">
+                                    <span class="mif-pencil"></span>
+                                </button>
+                            </div>     
+                                <div class="form-actions">
+                                    <button  type="submit" class="button primary">Save</button>
+                                    <button  id='cancel_login_button' type="button" data-dismiss="modal" class="button link">Close</button>
+                                </div>
+                            </form>
+                                    
+
+                                    </div>
+                                <div class="frame" id="frame_5_3">
+                                    <p>
+                                        <label>Screen always stays on</label>
+                                        <label class="switch-original">
+                                            <input (change)="changeAlwaysOnState($event.target.value)" type="checkbox" [attr.checked]="c">
+                                            <span class="check"></span>
+                                        </label></p>
+                                   
+                                        <div class="text">
+                 <label>Current Background colour scheme</label>
+                  <div class="button square-button" [ngStyle]="{'background-color':currentUser.appSettings.colourScheme}"></div>
+                  <button  (click)="openColorCharm()" class="button"><span class="mif-pencil"></span></button>
+                                        </div>
+
+                  <div class="text">
+                 <label>Current Navbar colour scheme</label>
+                 <div class="button square-button" [ngStyle]="{'background-color':currentUser.appSettings.navbarColourScheme.color}"></div>
+                  <button  (click)="openColorCharm()" class="button"><span class="mif-pencil"></span></button>
+                  </div>
+                                    </div>
+                            </div>
+                        </div>

@@ -1,0 +1,34 @@
+
+    <div class='container'>
+        <!--<div class='background'></div>-->
+        <div class='background-white'></div>
+            <div class='row'>
+                <div class="col-md-12">
+                            <h3>Video Feed</h3>
+                            <hr/>
+                </div>
+            </div>
+            <div class='row'>
+                <div class="col-md-10">
+    	            <canvas #_canvas id="video-canvas"></canvas> 
+                </div>
+                <div class="col-md-2">
+                        <ul class="v-menu context block-shadow-impact min-size-required saveBtnMenu">
+                            <li><a (click)= "saveImage()" ><span class="mif-floppy-disk icon "></span> Save Image</a></li>
+                        </ul>
+
+                    <!--<button (click)= "saveImage()" class="button"><span class="mif-checkmark"></span>Capture Picture</button>-->
+                </div>
+            </div>
+            <div class='row'>
+                <div class="col-md-12">
+                    <h3>Last captured pictures</h3>
+                    <hr/>          
+                </div>
+            </div>
+            
+            <last-pictures [lastImages]="lastImages">
+            </last-pictures>
+            <br/>
+	</div>
+

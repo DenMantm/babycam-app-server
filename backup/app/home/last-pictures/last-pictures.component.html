@@ -1,0 +1,21 @@
+<div class="container">
+<div class='row'>
+    <div *ngFor="let image of lastImages" class="col-md-3">
+
+        <!--(mouseover)="image.mouseover=true" 
+             (mouseleave)="image.mouseover=false"
+             [ngClass]="{'element-selected':image.mouseover}" -->
+
+        <div  class="image-container border animated fadeIn">
+            <div class="frame">
+                <img src="{{'/app/assets/images/gallery/'+image.imageUrl}}">
+            </div>
+            <div class="image-overlay">
+                <p>{{image.title}}</p>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</div>

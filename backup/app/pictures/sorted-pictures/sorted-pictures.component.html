@@ -1,0 +1,54 @@
+<div class="listview set-border padding10" data-role="listview" id="lv1" data-on-list-click="alert('You select ' + list.find('.list-title').text())">
+    <div class="listview" data-role="listview">
+    <div *ngFor="let item of sortedImageObject" (click)="item.hidden=false" class="list-group collapsed animated lightSpeedIn">
+        <span class="list-group-toggle">{{titlePrefix + item.group}}</span>
+        <div class="list-group-content animated lightSpeedIn" [ngClass]="{'hide':item.hidden}" >
+            <div class="row">
+                <div *ngFor="let image of item.images" class="col-md-6">
+                                <!--<hr class="bg-blue">
+                                <div>
+
+                                </div>-->
+
+                    <div class="window cont-style">
+                            <div class="window-caption">
+                                <span class="window-caption-icon"><span class="mif-windows"></span></span>
+                                <span class="window-caption-title">Image - {{image.imageDate | date: 'dd/MM/yyyy hh:mm'}}</span>
+                                <span (click)="removeImage(image)" class="btn-close" [ngStyle]="{'background-color':red}"></span>
+                            </div>
+                            <div class="window-content">
+                                    <img class="picture-style" src="{{'/app/assets/images/gallery/'+image.imageUrl}}">
+                                    <h5 class="no-margin-top">{{image.title}}</h5>
+                            </div>
+                        </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+            </div>
+
+<div  id="DeleteImage" class="modal fade block-shadow animated flipInX" tabindex="-1">
+  <div class="modal-dialog">
+                    <div id="dialog_id_1493912661626" class="dialog dialog-ex" style="width: auto; height: auto; visibility: visible; position:fixed;    margin-top: 30%;
+    margin-left: 23%;">
+                        <div class="dialog-title warning">Delete Image</div>
+                        <div class="dialog-content">Are you sure you want to delete image?</div>
+                        <div class="dialog-actions">
+                            <button (click)="deleteSelected()" data-dismiss="modal" type="button" class="button">Ok</button>
+                            <button data-dismiss="modal" type="button" class="button js-dialog-close">Cancel</button>
+                            </div>
+                    </div>
+
+  </div>
+
+
+  
+</div>
+            
+
+            

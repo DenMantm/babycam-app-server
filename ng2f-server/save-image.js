@@ -2,8 +2,6 @@ var fs = require('fs');
 var path = require('path');
 
 exports.saveImage = function (dataUrl,res) {
-    console.log('start');
-    
    // var matches = dataUrl.match(/^data:.+\/(.+);base64,(.*)$/);
    // var buffer = new Buffer(matches[2], 'base64');
    
@@ -17,7 +15,7 @@ exports.saveImage = function (dataUrl,res) {
     
     res.send({status:true,
               fileName:fileName})
-    console.log('finish');     
+              
     return fileName;
 };
 

@@ -2,11 +2,16 @@ import { Injectable } from '@angular/core';
 import { IUser } from './user.model'
 import { Router } from '@angular/router';
 import { Http, Response, Headers, RequestOptions} from '@angular/http';
-import { Observable } from 'rxjs/Rx';
+//import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { Subject } from "rxjs/Subject";
+
+
 @Injectable()
 export class AuthService{
-    currentUser:IUser
+    currentUser:IUser;
+    loginSubject:any;
+    
     
     constructor(private router:Router,private http:Http){
 
@@ -49,16 +54,46 @@ export class AuthService{
         let options = new RequestOptions({headers:headers});
         let loginInfo = {username:username,password:password};
 
+        this.loginSubject = this.http.post('/api/login',JSON.stringify(loginInfo),options);
+        
+        
+        
+        
+        
+        
         console.log(loginInfo);
 
-        return this.http.post('/api/login',JSON.stringify(loginInfo),options).do(
-            resp =>{ if(resp){
-                this.currentUser = resp.json().user;
-                this.router.navigate(['/home']);
+        // return this.http.post('/api/login',JSON.stringify(loginInfo),options).do(
+        //     resp =>{ if(resp){
+        //         this.currentUser = resp.json().user;
+        //         this.router.navigate(['/home']);
+        //     }
+        // }).catch(error =>{
+        //         return Observable.of(false);
+        //     })
+        this.loginSubject.subscribe(resp => {
+            if(resp){
+                //console.log();
+                
+                if(resp.json().status == 'failed'){
+                    console.log('Failed to login');
+                    }
+                else{
+                 this.currentUser = resp.json().user;
+                    this.router.navigate(['/home']);
+                }
+
             }
-        }).catch(error =>{
-                return Observable.of(false);
-            })
+            else{
+                console.log('No Response');
+                
+            }
+            
+        });
+            
+        return this.loginSubject;
+            
+        
         // this.currentUser = {id:1, 
         //             username:username,
         //             firstName:'Deniss' }
@@ -78,6 +113,7 @@ export class AuthService{
             resp =>{ if(resp){
                 // this.currentUser = resp.json().user;
                 // this.router.navigate(['/home']);
+                console.log('SPINNNINNNGG!!!');
                 
             }
         }).catch(error =>{
@@ -95,11 +131,13 @@ export class AuthService{
 
              this.http.get('/api/logout').do(
             resp =>{ if(resp){
+                console.log('working')
                 this.currentUser = null
                 this.router.navigate(['/landingPage']);
             }
         }).subscribe();
     }
+    
     getCurrentUser(){
         return this.currentUser
     }

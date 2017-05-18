@@ -27,7 +27,7 @@ module.exports = function() {
   passport.deserializeUser(function(id, done) {
     // console.log(3, id);
 
-      console.log('Debug1-'+id);
+     // console.log('Debug1-'+id);
 
 
       return db.findUserById(id,done);

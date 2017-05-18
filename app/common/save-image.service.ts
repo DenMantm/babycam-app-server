@@ -1,7 +1,8 @@
 import { Injectable,OnInit } from '@angular/core';
 import { AuthService } from '../user/auth.service';
 import { Http, RequestOptions, Headers } from '@angular/http';
-import { Observable } from "rxjs/Rx";
+//import { Observable } from "rxjs/Rx";
+import { Observable } from "rxjs/Observable";
 import { NotifyService } from './index';
 
 @Injectable()

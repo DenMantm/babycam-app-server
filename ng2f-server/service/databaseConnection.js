@@ -210,14 +210,22 @@ exports.findUserById = function(id,done){
 exports.updateUserInfo = function(req,res){
   MongoClient.connect(connectionString, function(err, db) {
   if(!err) {
-    //console.log("UpdateUserInfo - id - "+req.body.id);
+    console.log("UpdateUserInfo - id - "+req.body.id);
+    delete req.body._id;
+    console.log(req.body);
     var collection = db.collection('users');
         collection.update({id:req.body.id}, {$set:req.body}, {w:1}, function(err, result) {
-            //console.log(result);
-            if(result){
+            if(err){
+                console.log('Error');
+                console.log(err);
+                res.send({info:false});
+            }
+            else{
+            console.log('Updating User Information');
             res.send({info:true});
-        }
-        else{res.send({info:false});}
+            }
+
+        
         });
     }
 });

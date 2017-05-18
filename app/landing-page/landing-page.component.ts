@@ -58,15 +58,28 @@ onWindowScroll(event) {
       this.dynamicOpacity =  1-(scrollPos/250);
 }
 login(value){
-    this.auth.login(value.username,value.password).subscribe(resp =>{
-            if(!resp){
-        console.log('Failed to login');
-        this.validLogin = false;
-    }
-    });
+    // this.auth.login(value.username,value.password).subscribe(resp =>{
+    //         if(!resp){
+    //     console.log('Failed to login');
+    //     this.validLogin = false;
+    // }
+    
+    
+    this.auth.login(value.username,value.password).subscribe(resp => {
+                    if(resp.json().status == 'failed'){
+                        this.validLogin = false;
+                    }
+
+    })
+    
+    
+ 
+
+    
+}
+   // });
     //console.log(response);
 
 }
 
 	
-}

@@ -224,8 +224,6 @@ exports.updateUserInfo = function(req,res){
             console.log('Updating User Information');
             res.send({info:true});
             }
-
-        
         });
     }
 });

@@ -12,16 +12,16 @@ var qs = require('querystring');
 module.exports = function(app) {
 
   //Galerry and image routes::
-  app.post('/api/saveCanvasImage',db.saveNewImage);
-  app.post('/api/deleteCanvasImage',db.deleteImage);
-  app.get('/api/getLastImages',db.getLastImages);
-  app.get('/api/getAllImages',db.getAllImages);
+  app.post('/api/saveCanvasImage',isLoggedIn,db.saveNewImage);
+  app.post('/api/deleteCanvasImage',isLoggedIn,db.deleteImage);
+  app.get('/api/getLastImages',isLoggedIn,db.getLastImages);
+  app.get('/api/getAllImages',isLoggedIn,db.getAllImages);
 
   //userManipulationAPI
 
   app.post('/api/login', auth.authenticate);
   app.get('/api/currentIdentity', auth.getCurrentIdentity);
-  app.post('/api/changeSettings', db.updateUserInfo);
+  app.post('/api/changeSettings',isLoggedIn, db.updateUserInfo);
 
   app.put('/api/users/:id', users.updateUser);
   

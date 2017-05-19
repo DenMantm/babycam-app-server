@@ -1,45 +1,3 @@
-<!--<div class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" >ngEvents</a>
-    </div>
-
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li>
-          <a [routerLink]="['/home']" >Home</a>
-        </li>
-        <li><a [routerLink]="['/pictures']">Pictures</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
-            Events
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li >
-              <a href="">Angular Connect</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <div class="navbar-header navbar-right">
-        <ul class="nav navbar-nav">
-          <li>
-            <a >Welcome </a>
-          </li>
-        </ul>
-      </div>
-      <form id="searchForm"  class="navbar-form navbar-right"  >
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search Sessions" >
-        </div>
-        <button class="btn btn-default" >
-          Search
-        </button>
-      </form>
-    </div>
-  </div>
-</div>-->
 <div [ngClass]="[currentUser.appSettings.navbarColourScheme.class]" class="app-bar" data-role="appbar">
         <a class="app-bar-element branding">BabyCam</a>
         <span class="app-bar-divider"></span>
@@ -47,6 +5,14 @@
             <li><a [routerLink]="['/home']">Video Feed</a></li>
             <li><a [routerLink]="['/pictures']">Galery</a></li>
         </ul>
+        <!--<div  class="app-bar-pullbutton" data-toggle="collapse" data-target="#smallMenu">-->
+        <!--Menu-->
+        <!--    <span class="mif-plus"></span>-->
+        <!--</div>-->
+            
+
+        
+        
 
         <div class="app-bar-element place-right">
             <span class="dropdown-toggle"><span class="mif-cog"></span>Welcome {{currentUser.userName}}</span>
@@ -59,7 +25,31 @@
                 </ul>
             </div>
         </div>
+        
+        <div class="app-bar-element place-right">
+            <span class="app-bar-pullbutton dropdown-toggle"><span class="mif-list"></span>Menu ..</span>
+            <div class="app-bar-drop-container padding10 place-right no-margin-top block-shadow fg-dark" data-role="dropdown" data-no-close="true" style="width: 220px">
+                <h2 class="text-light">Menu Items</h2>
+                <ul class="unstyled-list fg-dark">
+                                <li><a class="fg-white1 fg-hover-yellow" [routerLink]="['/home']">Video Feed</a></li>
+                                <li><a class="fg-white1 fg-hover-yellow" [routerLink]="['/pictures']">Galery</a></li>
+                </ul>
+            </div>
+        </div>
+        
 </div>
+            
+            
+              <!--<div id="smallMenu" class="collapse">-->
+              <!--    <div class="app-bar" data-role="appbar">-->
+              <!--    <ul class="app-bar-menu">-->
+              <!--      <li><a [routerLink]="['/home']">Video Feed</a></li>-->
+              <!--      <li><a [routerLink]="['/pictures']">Galery</a></li>-->
+              <!--      </div>-->
+              <!--  </ul>-->
+              <!--</div>-->
+            
+
 
 <div #charm data-role="charm" data-position="bottom">
     <h3 class="text-light">Background Colour Schemes</h3>

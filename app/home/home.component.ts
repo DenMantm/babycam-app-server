@@ -1,5 +1,6 @@
-import {Component, ViewChild, ElementRef, AfterViewInit,OnInit} from '@angular/core';
-import { SaveImageService } from '../common/index';
+import {Component, ViewChild, ElementRef, AfterViewInit,OnInit, Inject} from '@angular/core';
+import { SaveImageService,JQUERY_TOKEN } from '../common/index';
+import { AuthService } from '../user/auth.service';
 
 declare let JSMpeg:any;
 
@@ -16,14 +17,20 @@ export class HomeComponent implements OnInit {
 		ngOnInit(): void {
 			this.getLastImages();
 		}
+		
+	private el:HTMLElement;
+		
 	lastImages:Object[];
 	canvas:any;
+	video
 	url:string;
 	player:any;
-	@ViewChild("_canvas") myCanvas:ElementRef; 
+	@ViewChild("_canvas") myCanvas:ElementRef;
+	@ViewChild("_video") myVideo:ElementRef;
+
 	//constructor(canvas:canvas){}
-	constructor(private imageService:SaveImageService){
-		
+	constructor(private ref:ElementRef,private auth:AuthService,private imageService:SaveImageService, @Inject(JQUERY_TOKEN) private $){
+		 this.el = ref.nativeElement;
 	}
   ngAfterViewInit() {
     
@@ -31,6 +38,12 @@ export class HomeComponent implements OnInit {
 
 	this.url = 'ws://80.111.15.147:8080/';
 	this.player = new JSMpeg.Player(this.url, { canvas: this.canvas,preserveDrawingBuffer:true });
+	
+	
+	//enabling video element
+	this.checkNoSleep();
+	
+	
   }
 	saveImage(){
 		this.imageService.saveImage(this.myCanvas.nativeElement);
@@ -41,7 +54,26 @@ export class HomeComponent implements OnInit {
       console.log(data) ;
      this.lastImages = data });
 	}
-	
+	checkNoSleep(){
+		
+		let user = this.auth.getCurrentUser();
+		console.log('User is:')
+		
+		console.log(user);
 
+		this.video = this.myVideo.nativeElement;
+		
+		console.log(this.video);
+		
+		// setInterval(function(){ 
+			
+		// 	this.video.play();
+			
+		// }, 3000);
+		
+      
+		 
+		
+	}
 
 }

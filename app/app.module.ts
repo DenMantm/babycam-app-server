@@ -32,6 +32,7 @@ import { appRoutes } from './routes'
 
 declare let jQuery:Object;
 declare let moment:Object;
+
 // declare let metro:Object;
 
 @NgModule({
@@ -55,6 +56,7 @@ declare let moment:Object;
     providers: [AuthService,LoggedInGuard,FirstPageGuard,ColorSchemeService,NotifyService,SaveImageService,
     {provide:JQUERY_TOKEN,useValue:jQuery},
     {provide:MOMENT_TOKEN,useValue:moment}
+
     ],
     bootstrap:[BabycamAppComponent]
 })

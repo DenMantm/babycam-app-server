@@ -71,11 +71,7 @@ login(value){
                     }
 
     })
-    
-    
- 
 
-    
 }
    // });
     //console.log(response);

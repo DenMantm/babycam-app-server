@@ -51,9 +51,17 @@ export class NavbarComponent {
 
                             
         //this.currentUser.appSettings.navbarColourScheme = this.navbarColors[0];
-        this.changeColour(this.currentUser.appSettings.colourScheme);
-        this.changeNavbarColour(this.currentUser.appSettings.navbarColourScheme);
+        
+       
+      
     }
+    
+        ngAfterViewInit() {
+                  this.changeColour(this.currentUser.appSettings.colourScheme);
+                    this.changeNavbarColour(this.currentUser.appSettings.navbarColourScheme);
+        }
+    
+    
     showColourScheme(){
            var  charm = this.$(this.el).data("charm");
             if (charm.element.data("opened") === true) {
@@ -63,6 +71,7 @@ export class NavbarComponent {
             }
     }
     changeColour(color){
+        
         this.changeScheme.emit(color);
         this.currentUser.appSettings.colourScheme = color;
 

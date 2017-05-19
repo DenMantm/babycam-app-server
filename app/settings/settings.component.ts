@@ -58,9 +58,9 @@ export class SettingsComponent implements OnInit {
         saveSettings(value){
             console.log(value);
             if(this.showUsername||this.showFirst||this.showLast){
-            this.currentUser.userName = value.userName;
-            this.currentUser.firstName = value.firstName;
-            this.currentUser.lastName = value.lastName;
+                    this.currentUser.userName = value.userName;
+                    this.currentUser.firstName = value.firstName;
+                    this.currentUser.lastName = value.lastName;
 
             this.authService.changeUserSettings(this.currentUser).subscribe(resp=>{
                     this.notify.saveSuccess("Saved","User Profile Information Succesfully saved")
@@ -68,9 +68,9 @@ export class SettingsComponent implements OnInit {
 
 
 
-            this.showUsername=false;
-            this.showFirst=false;
-            this.showLast=false;
+                    this.showUsername=false;
+                    this.showFirst=false;
+                    this.showLast=false;
             }
                     else{
             this.notify.warning('Warning',"There was nothing to save!");
@@ -87,7 +87,7 @@ export class SettingsComponent implements OnInit {
             //save new object to db here//
             this.authService.changeUserSettings(this.currentUser).subscribe(resp=>{
                 console.log(resp);
-            this.notify.saveSuccess("Saved","Baby Information Succesfully saved")
+                this.notify.saveSuccess("Saved","Baby Information Succesfully saved")
             });
             this.showBabyname=false;
             this.showBabyBirthday=false;

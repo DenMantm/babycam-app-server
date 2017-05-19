@@ -139,6 +139,6 @@ export class AuthService{
     }
     
     getCurrentUser(){
-        return this.currentUser
+        return this.currentUser;
     }
 }

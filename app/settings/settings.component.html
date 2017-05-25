@@ -97,7 +97,7 @@
                                     <p>
                                         <label>Screen always stays on</label>
                                         <label class="switch-original">
-                                            <input (change)="changeAlwaysOnState($event.target.value)" type="checkbox" [attr.checked]="c">
+                                            <input (change)="changeAlwaysOnState($event.target.checked)" type="checkbox" [attr.checked]="currentUser.appSettings.stayAlive">
                                             <span class="check"></span>
                                         </label></p>
                                    

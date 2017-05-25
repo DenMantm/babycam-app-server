@@ -13,8 +13,8 @@ import { LoggedInGuard, FirstPageGuard, UserResolverService } from './common/ind
 //canDeactivate:['canDeactivateCreateEvent'],
 
 export const appRoutes:Routes = [
-    {path:'home',component:HomeComponent,canActivate:[LoggedInGuard]},
-    {path:'pictures',component:PicturesComponent,resolve:{user:UserResolverService},canActivate:[LoggedInGuard]},
+    {path:'home',component:HomeComponent,resolve:{user:UserResolverService}},
+    {path:'pictures',component:PicturesComponent,resolve:{user:UserResolverService}},
     {path:'landingPage',component:LandingPageComponent,canActivate:[FirstPageGuard]},
     { path: '404', component: Error404Component },
     {path:'', redirectTo:'/landingPage', pathMatch:'full'}

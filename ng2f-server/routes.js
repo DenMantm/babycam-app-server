@@ -1,6 +1,4 @@
 var auth = require('./auth'),
-  events = require('./controllers/eventController'),
-  users = require('./controllers/userController');
   path = require('path');
 
 var db = require('./service/databaseConnection');
@@ -25,7 +23,6 @@ module.exports = function(app) {
   app.get('/api/currentIdentity', auth.getCurrentIdentity);
   app.post('/api/changeSettings',isLoggedIn, db.updateUserInfo);
 
-  app.put('/api/users/:id', users.updateUser);
   
   // app.get('/api/events', events.getEvents);
   // app.get('/api/events/:eventId', events.getEvent);

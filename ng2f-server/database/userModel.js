@@ -20,6 +20,7 @@ var userSchema = new Schema(
 }
 );
 
+
 // the schema is useless so far
 // we need to create a model using it
 var user = mongoose.model('user', userSchema);

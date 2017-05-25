@@ -106,8 +106,10 @@ export class SettingsComponent implements OnInit {
             this.currentUser.appSettings.stayAlive = value;
             console.log(this.currentUser.appSettings.stayAlive);
             //save new object to db here//
-
-            this.notify.saveSuccess("Saved","Always on state option Succesfully saved")
+            
+            this.authService.changeUserSettings(this.currentUser).subscribe(resp=>{
+                    this.notify.saveSuccess("Saved","Screen will stay always on now");
+            });
            // console.log("Always On State " +value);
         }
 

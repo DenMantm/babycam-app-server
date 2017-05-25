@@ -70,9 +70,9 @@
                                     <span class="mif-cancel"></span>
                                 </button>
                             </div>
-                            <label>Babys Birthday {{x}}</label>
-                            <div *ngIf="showBabyBirthday"  class="input-control text" data-role="datepicker" [attr.data-preset]="currentUser.babySettings.babyBirthDate">
-                                <input (change)="x=$event.target.value" formControlName="babyBirthDate" type="text">
+                            <label>Babys Birthday</label>
+                            <div *ngIf="showBabyBirthday"  class="input-control text" >
+                                <input  formControlName="babyBirthDate" type="date">
                                 <button class="button"><span class="mif-calendar"></span></button>
                                 <button (click)="showBabyBirthday=false" class="button">
                                     <span class="mif-cancel"></span>
@@ -80,7 +80,7 @@
                             </div>
                             <div *ngIf="!showBabyBirthday" class="input-control text input" data-role="input">
                                 <!--<input type="text">-->
-                                <p>{{currentUser.babySettings.babyBirthDate  | date: 'yyyy.MM.dd'}}</p>
+                                <p>{{currentUser.babySettings.babyBirthDate  | date: 'dd.MM.yyyy'}}</p>
                                 <button  (click)="showBabyBirthday=true" class="button">
                                     <span class="mif-pencil"></span>
                                 </button>

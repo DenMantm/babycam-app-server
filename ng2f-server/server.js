@@ -6,6 +6,10 @@ var  port = process.env.PORT || 8808
 
 var app = express();
 
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://user:user@ds041924.mongolab.com:41924/testbase');
+
 
 
 require('./expressConfig')(app);

@@ -1,4 +1,7 @@
 import {Component} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../user/auth.service';
+import { IUser } from '../user/user.model';
 
 @Component({
     templateUrl:'./app/pictures/pictures.component.html',
@@ -23,7 +26,14 @@ import {Component} from '@angular/core';
 
 export class PicturesComponent {
 	condition:string;
+	user:IUser;
+	
 	ngOnInit(){
 		this.condition = "days";
+		
+		this.user = this.route.snapshot.data['user']; 
+   }
+	
+	constructor(private auth:AuthService,private route:ActivatedRoute){
 	}
 }

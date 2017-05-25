@@ -161,7 +161,35 @@ exports.getAllImages= function(req,res){
     }
 });
 
-
+}
+exports.changeImageDetails = function(req,res){
+      MongoClient.connect(connectionString, function(err, db) {
+  if(!err) {
+    //console.log("We are connected");
+    
+    var collection = db.collection('images');
+    
+    
+    delete req.body._id;
+    
+   // console.log(req.body);
+    
+        collection.update({imageUrl:req.body.imageUrl}, {$set:req.body}, {w:1}, function(err, result) {
+            if(err){
+                console.log('Error');
+                console.log(err);
+                res.send({info:false});
+            }
+            else{
+            console.log('Updating Image Information');
+          //  console.log(result);
+            res.send({info:true});
+            
+            }
+        });
+        
+    }
+});
 }
 
 

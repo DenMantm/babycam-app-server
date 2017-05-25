@@ -17,8 +17,14 @@
                                 <span (click)="removeImage(image)" class="btn-close" [ngStyle]="{'background-color':red}"></span>
                             </div>
                             <div class="window-content">
+                                    <h4 (click)="changeImageDetails(image)" [ngStyle]="{'cursor': 'pointer','float':'left'}" >
+                                        <span *ngIf="!image.favourite">Set Favourite</span>
+                                        <span *ngIf="image.favourite" >Unset Favourite</span>
+                                        <span class="mif-star-full" [ngClass]="{'yellow': image.favourite}"></span>
+                                    </h4>
                                     <img class="picture-style" src="{{'/app/assets/images/gallery/'+image.imageUrl}}">
                                     <h5 class="no-margin-top">{{image.title}}</h5>
+
                             </div>
                         </div>
 

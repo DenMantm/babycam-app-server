@@ -16,6 +16,8 @@ module.exports = function(app) {
   app.post('/api/deleteCanvasImage',isLoggedIn,db.deleteImage);
   app.get('/api/getLastImages',isLoggedIn,db.getLastImages);
   app.get('/api/getAllImages',isLoggedIn,db.getAllImages);
+  ///api/changeImageDetails
+  app.post('/api/changeImageDetails',isLoggedIn, db.changeImageDetails);
 
   //userManipulationAPI
 

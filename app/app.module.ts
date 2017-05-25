@@ -25,7 +25,7 @@ import { LoggedInGuard,
         NotifyService,
         JQUERY_TOKEN,
         MOMENT_TOKEN,
-        SimpleModalComponent, FirstPageGuard, SaveImageService
+        SimpleModalComponent, FirstPageGuard, SaveImageService, UserResolverService
          } from './common/index';
 
 import { appRoutes } from './routes'
@@ -53,7 +53,7 @@ declare let moment:Object;
                     LastPicturesComponent,
                     SortedPicturesComponent
                     ],
-    providers: [AuthService,LoggedInGuard,FirstPageGuard,ColorSchemeService,NotifyService,SaveImageService,
+    providers: [AuthService,LoggedInGuard,FirstPageGuard,ColorSchemeService,NotifyService,SaveImageService,UserResolverService,
     {provide:JQUERY_TOKEN,useValue:jQuery},
     {provide:MOMENT_TOKEN,useValue:moment}
 

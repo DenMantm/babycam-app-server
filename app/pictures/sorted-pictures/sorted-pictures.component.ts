@@ -1,6 +1,7 @@
 import { Component, Inject, Input,OnChanges } from '@angular/core';
 import { SaveImageService, MOMENT_TOKEN, NotifyService, JQUERY_TOKEN } from '../../common/index';
-
+import { AuthService } from '../../user/auth.service';
+import { IUser } from '../../user/user.model';
 
 @Component({
     selector:'sorted-pictures',
@@ -9,6 +10,7 @@ import { SaveImageService, MOMENT_TOKEN, NotifyService, JQUERY_TOKEN } from '../
             .picture-style{
                 width: 100%; 
             }
+            .yellow{color:yellow;}
             .cont-style{
           border-radius: 5px;
           margin-top:10px;
@@ -17,22 +19,24 @@ import { SaveImageService, MOMENT_TOKEN, NotifyService, JQUERY_TOKEN } from '../
 
 export class SortedPicturesComponent {
         selectImage: any;
-
+    user:IUser;
     allImages:any;
     sortedImageObject:any;
     birthDate:Date;
     titlePrefix:string;
     private el:HTMLElement
     
+    
     @Input() condition:string;
-    constructor(private imageService:SaveImageService, 
+    
+    constructor(private imageService:SaveImageService,
                 @Inject(MOMENT_TOKEN)private moment,
                 private notify:NotifyService,
-                @Inject(JQUERY_TOKEN) private $){
-        this.birthDate = new Date('2012-01-01');
+                @Inject(JQUERY_TOKEN) private $,
+                private auth:AuthService){
     }
     ngOnChanges(){
-        
+         this.birthDate = this.auth.getCurrentUser().babySettings.babyBirthDate;
         //logic to stop loading data from database on each change
         if(this.sortedImageObject===undefined){
                     this.imageService.getAllImages().subscribe(res=>{
@@ -164,6 +168,20 @@ deleteSelected(){
         //console.log(Passed);
         console.log(this.sortedImageObject);
 
+    }
+    
+    changeImageDetails(updatedImage){
+        
+        updatedImage.favourite = !updatedImage.favourite;
+        
+        this.imageService.changeImageDetails(updatedImage).subscribe(res=>{
+            console.log(res);
+            
+
+            
+            
+        });
+        
     }
 
 }

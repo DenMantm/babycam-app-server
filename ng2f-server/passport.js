@@ -2,17 +2,39 @@ var passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy;
   var db = require('./service/databaseConnection'),
   users = require('./database/users');
+
+var userModel = require('./database/userModel');
   
   
 module.exports = function() {
   passport.use(new LocalStrategy(
     function(username, password, done) {
       
-      var searchFor = {userName:username,
-                      password:password};
+      //var searchFor = {userName:username,
+       //               password:password};
       //console.log('Debug2-'+searchFor.userName + "ppwd" + searchFor.password);
 
-      return db.findUserByUsername(searchFor,done);
+     //return db.findUserByUsername(searchFor,done);
+     
+             userModel.findOne({ 'userName' :  username }, function(err, user) {
+            // if there are any errors, return the error before anything else
+            if (err)
+                return done(err);
+
+            // if no user is found, return the message
+            if (!user)
+                return done(null, false); // req.flash is the way to set flashdata using connect-flash
+
+            // if the user is found but the password is wrong
+            //if (!user.validPassword(password))
+              //  return done(null, false); // create the loginMessage and save it to session as flashdata
+
+            // all is well, return successful user
+            return done(null, user);
+        });
+     
+     
+     
       
     }
   ));
@@ -25,21 +47,17 @@ module.exports = function() {
   });
 
   passport.deserializeUser(function(id, done) {
-    // console.log(3, id);
 
-     // console.log('Debug1-'+id);
+        // userModel.findById(id, function(err, user) {
+        //     done(err, user);
+        // });
+        userModel.findOne({ 'id' :  id }, function(err, user) {
+          done(err, user);
+        });
+
+     // return db.findUserById(id,done);
 
 
-      return db.findUserById(id,done);
-
-    // var found = users.find(user => {
-    //   return user.id === id;
-    // })
-    //           if(found) {
-    //   return done(null, found);  
-    // } else {
-    //   return done(null, false);
-    // }
 
   });
 

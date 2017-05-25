@@ -77,5 +77,33 @@ export class SaveImageService implements OnInit {
   getAllImages(){
     return this.http.get('/api/getAllImages').map(resp => resp.json());
   }
+  
+          changeImageDetails(updatedImage){
+        //spin authentication here and if succesfull
+        let headers = new Headers({'Content-Type':'application/json'});
+        let options = new RequestOptions({headers:headers});
+        //let loginInfo = {username:username,password:password};
+
+        console.log(updatedImage);
+
+        return this.http.post('/api/changeImageDetails',JSON.stringify(updatedImage),options).do(
+            resp =>{ if(resp){
+                // this.currentUser = resp.json().user;
+                // this.router.navigate(['/home']);
+                console.log('SPINNNINNNGG!!!');
+                
+            }
+        }).catch(error =>{
+                return Observable.of(false);
+            })
+        // this.currentUser = {id:1, 
+        //             username:username,
+        //             firstName:'Deniss' }
+
+        
+        //return true
+    }
+  
 }
+
 

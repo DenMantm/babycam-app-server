@@ -37,7 +37,8 @@ export class HomeComponent implements OnInit {
     this.canvas = this.myCanvas.nativeElement;
 
 	this.url = 'ws://80.111.15.147:8080/';
-	this.player = new JSMpeg.Player(this.url, { canvas: this.canvas,preserveDrawingBuffer:true });
+	this.player = new JSMpeg.Player(this.url, { canvas: this.canvas,preserveDrawingBuffer:true,
+												audioBufferSize:512*1024 });
 	
 	
 	//enabling video element

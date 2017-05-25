@@ -51,16 +51,11 @@ export class NavbarComponent {
 
                             
         //this.currentUser.appSettings.navbarColourScheme = this.navbarColors[0];
-        
-       
-      
     }
-    
         ngAfterViewInit() {
                   this.changeColour(this.currentUser.appSettings.colourScheme);
                     this.changeNavbarColour(this.currentUser.appSettings.navbarColourScheme);
         }
-    
     
     showColourScheme(){
            var  charm = this.$(this.el).data("charm");

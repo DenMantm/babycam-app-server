@@ -9,16 +9,16 @@ declare let JSMpeg:any;
     templateUrl:'./app/home/home.component.html',
 		//background-image: url("app/assets/images/video-page/white-background-stars.jpg")
 		styles:[`
-						canvas{border-style: groove;width:100%}
+						canvas{border-style:groove;width:100%}
 						.saveBtnMenu{max-width: 8rem!important;}
-						.videoElement{position:absolute}`]
+						.videoElement{width:80%!important;margin-left:20px;z-index:-1000!important;float:left!important;position: absolute!important}`]
 })
 
 
 export class HomeComponent implements OnInit {
 		ngOnInit(): void {
 			this.getLastImages();
-			this.user = this.route.snapshot.data['user']; 
+			this.user = this.route.snapshot.data['user'];
 		}
 	user:any;
 	private el:HTMLElement;

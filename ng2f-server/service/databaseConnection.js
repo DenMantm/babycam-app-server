@@ -5,6 +5,7 @@ var fs = require('fs');
 var ObjectID = require("mongodb").ObjectID;
 
 var imgs = require('../save-image'); 
+var path = require('path');
 
 // Connect to the db
 var connectionString = "mongodb://user:user@ds041924.mongolab.com:41924/testbase";

@@ -3,11 +3,11 @@ import { SaveImageService } from '../../common/index';
 @Component({
     selector:'last-pictures',
     templateUrl:'/app/home/last-pictures/last-pictures.component.html',
-    styles:[`.border{ border-style: groove;}`]
+    styles:[`.border{ border-style: groove;}
+    .preloader{margin-left:43%}`]
 })
 
 export class LastPicturesComponent{
-
         @Input() lastImages:Object[];
         timeoutVariable:number;
         constructor(private imageService:SaveImageService){}

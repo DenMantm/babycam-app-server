@@ -32,6 +32,8 @@ export class PicturesComponent {
 		this.condition = "days";
 		
 		this.user = this.route.snapshot.data['user']; 
+		
+		
    }
 	
 	constructor(private auth:AuthService,private route:ActivatedRoute){

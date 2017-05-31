@@ -1,3 +1,9 @@
+<div [hidden]="!!sortedImageObject" data-role="preloader" data-type="cycle" data-style="color" class="preloader">
+    
+</div>
+
+
+
 <div class="listview set-border padding10" data-role="listview" id="lv1" data-on-list-click="alert('You select ' + list.find('.list-title').text())">
     <div class="listview" data-role="listview">
     <div *ngFor="let item of sortedImageObject" (click)="item.hidden=false" class="list-group collapsed animated lightSpeedIn">
@@ -27,13 +33,9 @@
 
                             </div>
                         </div>
-
-
-
             </div>
         </div>
     </div>
-
 </div>
 
             </div>

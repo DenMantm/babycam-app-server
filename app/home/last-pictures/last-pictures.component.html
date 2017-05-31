@@ -1,5 +1,11 @@
+
+
 <div class="container">
 <div class='row'>
+    <div [hidden]="!!lastImages" data-role="preloader" data-type="cycle" data-style="color" class="preloader">
+    
+</div>
+    
     <div *ngFor="let image of lastImages" class="col-md-3">
 
         <!--(mouseover)="image.mouseover=true" 

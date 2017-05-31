@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
 	}
 	getLastImages(){
 		this.imageService.getLastImages().subscribe(data=>{
-      console.log(data) ;
+      console.log(data);
      this.lastImages = data });
 	}
 	checkNoSleep(){

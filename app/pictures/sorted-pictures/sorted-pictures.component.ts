@@ -14,7 +14,8 @@ import { IUser } from '../../user/user.model';
             .cont-style{
           border-radius: 5px;
           margin-top:10px;
-            }`]
+            }
+            .preloader{margin-left:43%;}`]
 })
 
 export class SortedPicturesComponent {
@@ -54,7 +55,7 @@ export class SortedPicturesComponent {
             this.titlePrefix = "Months ";
         }
         else{
-            this.titlePrefix = "Have Passed ";
+            this.titlePrefix = "Favourite ";
         }
     
 });
@@ -73,7 +74,7 @@ export class SortedPicturesComponent {
             this.titlePrefix = "Months ";
         }
         else{
-            this.titlePrefix = "Have Passed ";
+            this.titlePrefix = "Week ";
         }
 
 
@@ -95,7 +96,7 @@ deleteSelected(){
         for(let i = 0;i<this.allImages.length;i++){
             if(this.selectImage._id === this.allImages[i]._id){
                 this.allImages.splice(i, 1);
-                console.log(this.allImages.length);
+                //console.log(this.allImages.length);
                 break;
             }
         }
@@ -114,7 +115,7 @@ deleteSelected(){
 
        this.imageService.removeImage(this.selectImage).subscribe(resp=>{
            
-           console.log(resp)
+         //  console.log(resp)
            //remove image from the array ->
         
     });
@@ -125,13 +126,23 @@ deleteSelected(){
         let Passed;
         this.sortedImageObject = [];
         let tmpObj = {};
-
-        this.allImages.forEach(item => {
+        let tmpAllImgs ;
+        
+        if(condition == "Favourite") {
+        condition = 'weeks'; 
+        tmpAllImgs = this.allImages.slice().filter(cond => cond.favourite == true);
+        }
+        else{
+         tmpAllImgs = this.allImages.slice();
+        }
+        
+        
+        tmpAllImgs.forEach(item => {
 
             var imageTakken = this.moment().diff(item.imageDate, condition);
             var birthDate = this.moment().diff(this.birthDate, condition);
 
-            console.log(birthDate-imageTakken);
+           // console.log(birthDate-imageTakken);
 
             Passed = birthDate-imageTakken;
             if(tmpObj[Passed]==undefined){
@@ -166,7 +177,10 @@ deleteSelected(){
 }
 
         //console.log(Passed);
-        console.log(this.sortedImageObject);
+        //console.log(this.sortedImageObject.reverse());
+        
+        //reversing array (Lets hope its not gona get big)
+        this.sortedImageObject.reverse();
 
     }
     
@@ -175,11 +189,7 @@ deleteSelected(){
         updatedImage.favourite = !updatedImage.favourite;
         
         this.imageService.changeImageDetails(updatedImage).subscribe(res=>{
-            console.log(res);
-            
-
-            
-            
+           // console.log(res);
         });
         
     }

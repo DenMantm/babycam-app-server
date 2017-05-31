@@ -97,10 +97,10 @@
                                     <p>
                                         <label>Screen always stays on</label>
                                         <label class="switch-original">
-                                            <input (change)="changeAlwaysOnState($event.target.checked)" type="checkbox" [attr.checked]="currentUser.appSettings.stayAlive">
+                                            <input (change)="changeAlwaysOnState($event.target.checked)" type="checkbox" [checked]="currentUser.appSettings.stayAlive">
                                             <span class="check"></span>
                                         </label></p>
-                                   
+                                   <!--currentUser.appSettings.stayAlive-->
                                         <div class="text">
                  <label>Current Background colour scheme</label>
                   <div class="button square-button" [ngStyle]="{'background-color':currentUser.appSettings.colourScheme}"></div>

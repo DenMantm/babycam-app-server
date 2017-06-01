@@ -11,7 +11,7 @@ declare let JSMpeg:any;
 		styles:[`
 						canvas{border-style:groove;width:100%}
 						.saveBtnMenu{max-width: 8rem!important;}
-						.videoElement{width:80%!important;margin-left:20px;z-index:-1000!important;float:left!important;position: absolute!important}`]
+						.videoElement{width:100%!important;margin-left:20px;z-index:-1000!important;float:left!important;position: absolute!important}`]
 })
 
 

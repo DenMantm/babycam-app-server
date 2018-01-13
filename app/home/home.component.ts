@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
     
     this.canvas = this.myCanvas.nativeElement;
 
-	this.url = '';
+	this.url = '192.168.0.24:8081';
 	this.player = new JSMpeg.Player(this.url, { canvas: this.canvas,preserveDrawingBuffer:true,
 												audioBufferSize:512*1024 });
 
